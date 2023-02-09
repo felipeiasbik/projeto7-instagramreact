@@ -1,7 +1,7 @@
 
 export default function Usuario(){
   let nomeUsuario = prompt("Qual é o seu nome?");
-  const arrUsuario = [{urlperfil: "assets/img/catanacomics.svg", nomeusuario: nomeUsuario}];
+  const arrUsuario = [{urlperfil: "assets/img/profile.jpg", nomeusuario: nomeUsuario}];
     return (
         arrUsuario.map( v => <DadosUsusario urlperfil={v.urlperfil} nomeusuario={v.nomeusuario}/>)
     )

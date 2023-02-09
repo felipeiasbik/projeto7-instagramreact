@@ -24,7 +24,7 @@ export default function Posts(){
     conttxtimg: "WaltDisney", 
     curtimg: "https://www.procampuseducacao.com.br/wp-content/uploads/2017/08/fisk.jpg", 
     curtnome: "Fisk", 
-    curtnumero: "80.567"}
+    curtnumero: "80.540"}
   
   ];
 
