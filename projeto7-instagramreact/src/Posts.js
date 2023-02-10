@@ -1,3 +1,5 @@
+import {useState} from "react";
+
 export default function Posts(){
 
   const arrPosts = [
@@ -36,6 +38,8 @@ export default function Posts(){
 }
 
 function Post(props){
+  const [salvar, setSalvar] = useState("bookmark-outline");
+
   return (
     <div class="post">
     <div class="topo">
@@ -59,8 +63,8 @@ function Post(props){
           <ion-icon name="chatbubble-outline"></ion-icon>
           <ion-icon name="paper-plane-outline"></ion-icon>
         </div>
-        <div>
-          <ion-icon name="bookmark-outline"></ion-icon>
+        <div onClick={()=>setSalvar((salvar === "bookmark-outline") ? "bookmark" : "bookmark-outline")}>
+        <ion-icon name={salvar}></ion-icon>
         </div>
       </div>
 
