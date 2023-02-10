@@ -32,7 +32,7 @@ export default function Posts(){
 
     return (
         <div className="posts">
-          {arrPosts.map( v => <Post imgsrc={v.imgsrc} txtimg={v.txtimg} contimgsrc={v.contimgsrc} conttxtimg={v.conttxtimg} curtimg={v.curtimg} curtnome={v.curtnome} curtnumero={v.curtnumero}/>)}
+          {arrPosts.map( v => <Post key={v.curtnome} imgsrc={v.imgsrc} txtimg={v.txtimg} contimgsrc={v.contimgsrc} conttxtimg={v.conttxtimg} curtimg={v.curtimg} curtnome={v.curtnome} curtnumero={v.curtnumero}/>)}
         </div>
     )
 }
@@ -95,7 +95,7 @@ function Post(props){
         { !props.curtnome ? "" : <img src={props.curtimg} alt={props.curtnome} />}
         <div className="texto">
           {/*props.curtidas*/}
-          { !props.curtnome ? "" : "Curtido por "}<strong>{props.curtnome}</strong> {!props.curtnome ? "" : (props.curtnumero < 1) ? "" : "e "} <strong>{!props.curtnome ? "" : (props.curtnumero < 1) ? "" : (props.curtnumero < 2) ? "mais " : "outras "}{!props.curtnome ? "" : (props.curtnumero < 1) ? "" : contagem}  {!props.curtnome ? "" : (props.curtnumero < 1) ? "" : (props.curtnumero < 2) ? "pessoa" : "pessoas"}</strong>
+          { !props.curtnome ? "" : "Curtido por "}<strong>{props.curtnome}</strong> {!props.curtnome ? "" : (props.curtnumero < 1) ? "" : "e "} <strong>{!props.curtnome ? "" : (props.curtnumero < 1) ? "" : (props.curtnumero < 2) ? "mais " : "outras "}{!props.curtnome ? "" : (props.curtnumero < 1) ? "" : contagem.toLocaleString('pt-BR')}  {!props.curtnome ? "" : (props.curtnumero < 1) ? "" : (props.curtnumero < 2) ? "pessoa" : "pessoas"}</strong>
         </div>
       </div>
     </div>

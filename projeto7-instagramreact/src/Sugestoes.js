@@ -14,7 +14,7 @@ export default function Sugestoes(){
                 <div>Ver tudo</div>
               </div>
 
-              {arrSugestoes.map( v => <Sugestao img={v.img} texto={v.texto}/>)}
+              {arrSugestoes.map( v => <Sugestao key={v.texto} img={v.img} texto={v.texto}/>)}
 
             </div>
     )
