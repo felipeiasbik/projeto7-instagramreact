@@ -31,7 +31,7 @@ export default function Posts(){
   ];
 
     return (
-        <div class="posts">
+        <div className="posts">
           {arrPosts.map( v => <Post imgsrc={v.imgsrc} txtimg={v.txtimg} contimgsrc={v.contimgsrc} conttxtimg={v.conttxtimg} curtimg={v.curtimg} curtnome={v.curtnome} curtnumero={v.curtnumero}/>)}
         </div>
     )
@@ -55,24 +55,32 @@ function Post(props){
     }
   }
 
+  function deuLikeImg(){
+    if (like === "heart-outline"){
+      setLike("heart");
+      setCor("vermelho");
+      setContagem(contagem + 1);
+    }
+  }
+
   return (
-    <div class="post">
-    <div class="topo">
-      <div class="usuario">
+    <div className="post">
+    <div className="topo">
+      <div className="usuario">
         <img src={props.imgsrc} alt={props.txtimg} />
         {props.txtimg}
       </div>
-      <div class="acoes">
+      <div className="acoes">
         <ion-icon name="ellipsis-horizontal"></ion-icon>
       </div>
     </div>
 
-    <div class="conteudo">
+    <div className="conteudo" onDoubleClick={deuLikeImg}>
       <img src={props.contimgsrc} alt={props.conttxtimg} />
     </div>
 
-    <div class="fundo">
-      <div class="acoes">
+    <div className="fundo">
+      <div className="acoes">
         <div>
           <ion-icon class={cor} onClick={deuLike} name={like}></ion-icon>
           <ion-icon name="chatbubble-outline"></ion-icon>
@@ -83,9 +91,9 @@ function Post(props){
         </div>
       </div>
 
-      <div class="curtidas">
+      <div className="curtidas">
         { !props.curtnome ? "" : <img src={props.curtimg} alt={props.curtnome} />}
-        <div class="texto">
+        <div className="texto">
           {/*props.curtidas*/}
           { !props.curtnome ? "" : "Curtido por "}<strong>{props.curtnome}</strong> {!props.curtnome ? "" : (props.curtnumero < 1) ? "" : "e "} <strong>{!props.curtnome ? "" : (props.curtnumero < 1) ? "" : (props.curtnumero < 2) ? "mais " : "outras "}{!props.curtnome ? "" : (props.curtnumero < 1) ? "" : contagem}  {!props.curtnome ? "" : (props.curtnumero < 1) ? "" : (props.curtnumero < 2) ? "pessoa" : "pessoas"}</strong>
         </div>
