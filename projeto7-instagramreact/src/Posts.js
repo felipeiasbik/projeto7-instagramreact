@@ -10,7 +10,7 @@ export default function Posts(){
     conttxtimg: "gato-telefone", 
     curtimg: "assets/img/respondeai.svg", 
     curtnome: "respondeai", 
-    curtnumero: "101.523"},
+    curtnumero: "101523"},
   
     {imgsrc: "assets/img/barked.svg", 
     txtimg: "barked", 
@@ -18,7 +18,7 @@ export default function Posts(){
     conttxtimg: "dog", 
     curtimg: "assets/img/adorable_animals.svg", 
     curtnome: "adorable_animals", 
-    curtnumero: "99.159"},
+    curtnumero: "99159"},
   
     {imgsrc: "https://media.licdn.com/dms/image/C560BAQHMnA03XDdf3w/company-logo_200_200/0/1519855918965?e=2147483647&v=beta&t=J3kUMZwIphc90TFKH5oOO9Sa9K59fimgJf-s_okU3zs", 
     txtimg: "IMG", 
@@ -26,7 +26,7 @@ export default function Posts(){
     conttxtimg: "WaltDisney", 
     curtimg: "https://www.procampuseducacao.com.br/wp-content/uploads/2017/08/fisk.jpg", 
     curtnome: "Fisk", 
-    curtnumero: "80.540"}
+    curtnumero: "80540"}
   
   ];
 
@@ -39,6 +39,21 @@ export default function Posts(){
 
 function Post(props){
   const [salvar, setSalvar] = useState("bookmark-outline");
+  const [like, setLike] = useState("heart-outline");
+  const [cor, setCor] = useState("preto");
+  const [contagem, setContagem] = useState(parseInt(props.curtnumero));
+
+  function deuLike(){
+    if (like === "heart-outline"){
+      setLike("heart");
+      setCor("vermelho");
+      setContagem(contagem + 1);
+    } else {
+      setLike("heart-outline");
+      setCor("preto");
+      setContagem(contagem - 1);
+    }
+  }
 
   return (
     <div class="post">
@@ -59,11 +74,11 @@ function Post(props){
     <div class="fundo">
       <div class="acoes">
         <div>
-          <ion-icon name="heart-outline"></ion-icon>
+          <ion-icon class={cor} onClick={deuLike} name={like}></ion-icon>
           <ion-icon name="chatbubble-outline"></ion-icon>
           <ion-icon name="paper-plane-outline"></ion-icon>
         </div>
-        <div onClick={()=>setSalvar((salvar === "bookmark-outline") ? "bookmark" : "bookmark-outline")}>
+        <div onClick={ () => setSalvar((salvar === "bookmark-outline") ? "bookmark" : "bookmark-outline")}>
         <ion-icon name={salvar}></ion-icon>
         </div>
       </div>
@@ -72,7 +87,7 @@ function Post(props){
         { !props.curtnome ? "" : <img src={props.curtimg} alt={props.curtnome} />}
         <div class="texto">
           {/*props.curtidas*/}
-          { !props.curtnome ? "" : "Curtido por "}<strong>{props.curtnome}</strong> {!props.curtnome ? "" : (props.curtnumero < 1) ? "" : "e "} <strong>{!props.curtnome ? "" : (props.curtnumero < 1) ? "" : (props.curtnumero < 2) ? "mais " : "outras "}{!props.curtnome ? "" : (props.curtnumero < 1) ? "" : props.curtnumero}  {!props.curtnome ? "" : (props.curtnumero < 1) ? "" : (props.curtnumero < 2) ? "pessoa" : "pessoas"}</strong>
+          { !props.curtnome ? "" : "Curtido por "}<strong>{props.curtnome}</strong> {!props.curtnome ? "" : (props.curtnumero < 1) ? "" : "e "} <strong>{!props.curtnome ? "" : (props.curtnumero < 1) ? "" : (props.curtnumero < 2) ? "mais " : "outras "}{!props.curtnome ? "" : (props.curtnumero < 1) ? "" : contagem}  {!props.curtnome ? "" : (props.curtnumero < 1) ? "" : (props.curtnumero < 2) ? "pessoa" : "pessoas"}</strong>
         </div>
       </div>
     </div>
