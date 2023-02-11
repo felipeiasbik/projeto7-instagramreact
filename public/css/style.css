@@ -312,3 +312,32 @@ ion-icon {
 .preto {
   color: black;
 }
+
+.conteudo {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+}
+
+.animarLike{
+  position: absolute;
+  color: white;
+  font-size: 150px;
+  scale: 0.2;
+  animation: fadeInLike 0.3s 0s both;
+}
+
+@keyframes fadeInLike {
+  from {
+    scale: 0.2;
+  }
+  to {
+    scale: 1;
+  }
+}
+
+.esconder {
+  display: none;
+}

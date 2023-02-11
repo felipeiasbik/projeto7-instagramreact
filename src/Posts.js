@@ -42,6 +42,7 @@ function Post(props){
   const [like, setLike] = useState("heart-outline");
   const [cor, setCor] = useState("preto");
   const [contagem, setContagem] = useState(parseInt(props.curtnumero));
+  const [animaLike, setAnimaLike] = useState("esconder");
 
   function deuLike(){
     if (like === "heart-outline"){
@@ -55,11 +56,17 @@ function Post(props){
     }
   }
 
+  function animarLike(){
+    setAnimaLike("animarLike");
+    setTimeout((()=>setAnimaLike("esconder")),500);
+  }
+
   function deuLikeImg(){
     if (like === "heart-outline"){
       setLike("heart");
       setCor("vermelho");
       setContagem(contagem + 1);
+      animarLike();
     }
   }
 
@@ -76,6 +83,7 @@ function Post(props){
       </div>
 
       <div className="conteudo">
+        <div className={animaLike}><ion-icon name="heart"></ion-icon></div>
         <img onDoubleClick={deuLikeImg} src={props.contimgsrc} alt={props.conttxtimg} data-test="post-image"/>
       </div>
 
