@@ -64,41 +64,40 @@ function Post(props){
   }
 
   return (
-    <div className="post">
-    <div className="topo">
-      <div className="usuario">
-        <img src={props.imgsrc} alt={props.txtimg} />
-        {props.txtimg}
-      </div>
-      <div className="acoes">
-        <ion-icon name="ellipsis-horizontal"></ion-icon>
-      </div>
-    </div>
-
-    <div className="conteudo" onDoubleClick={deuLikeImg}>
-      <img src={props.contimgsrc} alt={props.conttxtimg} />
-    </div>
-
-    <div className="fundo">
-      <div className="acoes">
-        <div>
-          <ion-icon class={cor} onClick={deuLike} name={like}></ion-icon>
-          <ion-icon name="chatbubble-outline"></ion-icon>
-          <ion-icon name="paper-plane-outline"></ion-icon>
+    <div className="post" data-test="post">
+      <div className="topo">
+        <div className="usuario">
+          <img src={props.imgsrc} alt={props.txtimg} />
+          {props.txtimg}
         </div>
-        <div onClick={ () => setSalvar((salvar === "bookmark-outline") ? "bookmark" : "bookmark-outline")}>
-        <ion-icon name={salvar}></ion-icon>
+        <div className="acoes">
+          <ion-icon name="ellipsis-horizontal"></ion-icon>
         </div>
       </div>
 
-      <div className="curtidas">
-        { !props.curtnome ? "" : <img src={props.curtimg} alt={props.curtnome} />}
-        <div className="texto">
-          {/*props.curtidas*/}
-          { !props.curtnome ? "" : "Curtido por "}<strong>{props.curtnome}</strong> {!props.curtnome ? "" : (props.curtnumero < 1) ? "" : "e "} <strong>{!props.curtnome ? "" : (props.curtnumero < 1) ? "" : (props.curtnumero < 2) ? "mais " : "outras "}{!props.curtnome ? "" : (props.curtnumero < 1) ? "" : contagem.toLocaleString('pt-BR')}  {!props.curtnome ? "" : (props.curtnumero < 1) ? "" : (props.curtnumero < 2) ? "pessoa" : "pessoas"}</strong>
+      <div className="conteudo">
+        <img onDoubleClick={deuLikeImg} src={props.contimgsrc} alt={props.conttxtimg} data-test="post-image"/>
+      </div>
+
+      <div className="fundo">
+        <div className="acoes">
+          <div>
+            <ion-icon class={cor} onClick={deuLike} name={like} data-test="like-post"></ion-icon>
+            <ion-icon name="chatbubble-outline"></ion-icon>
+            <ion-icon name="paper-plane-outline"></ion-icon>
+          </div>
+          <div onClick={ () => setSalvar((salvar === "bookmark-outline") ? "bookmark" : "bookmark-outline")} data-test="save-post">
+          <ion-icon name={salvar}></ion-icon>
+          </div>
+        </div>
+
+        <div className="curtidas">
+          { !props.curtnome ? "" : <img src={props.curtimg} alt={props.curtnome} />}
+          <div className="texto" data-test="likes-number">
+            { !props.curtnome ? "" : "Curtido por "}<strong>{props.curtnome}</strong> {!props.curtnome ? "" : (props.curtnumero < 1) ? "" : "e "} <strong>{!props.curtnome ? "" : (props.curtnumero < 1) ? "" : (props.curtnumero < 2) ? "mais " : "outras "}{!props.curtnome ? "" : (props.curtnumero < 1) ? "" : contagem.toLocaleString('pt-BR')}  {!props.curtnome ? "" : (props.curtnumero < 1) ? "" : (props.curtnumero < 2) ? "pessoa" : "pessoas"}</strong>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   )
 }
