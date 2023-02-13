@@ -18,15 +18,7 @@ export default function Posts(){
     conttxtimg: "dog", 
     curtimg: "assets/img/adorable_animals.svg", 
     curtnome: "adorable_animals", 
-    curtnumero: "99159"},
-  
-    {imgsrc: "https://media.licdn.com/dms/image/C560BAQHMnA03XDdf3w/company-logo_200_200/0/1519855918965?e=2147483647&v=beta&t=J3kUMZwIphc90TFKH5oOO9Sa9K59fimgJf-s_okU3zs", 
-    txtimg: "IMG", 
-    contimgsrc: "https://i0.wp.com/imgonline.com.br/site/wp-content/uploads/2019/07/Capa-IMG.png", 
-    conttxtimg: "WaltDisney", 
-    curtimg: "https://www.procampuseducacao.com.br/wp-content/uploads/2017/08/fisk.jpg", 
-    curtnome: "Fisk", 
-    curtnumero: "80540"}
+    curtnumero: "99159"}
   
   ];
 
